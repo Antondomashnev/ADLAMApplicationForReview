@@ -17,15 +17,17 @@
 
 #define ARROW_IMAGE_VIEW_FRAME CGRectMake(295, 20, 10, 6)
 
+#define TOPIC_VIEW_SIZE CGSizeMake(320, 44)
+
 @interface LAMSelectTopicView()
 
 @property (nonatomic, strong) NSMutableArray *topics;
-@property (nonatomic, unsafe_unretained) CGSize topicViewSize;
-
 @property (nonatomic, strong) NSMutableArray *topicsViewArray;
 @property (nonatomic, strong) LAMTopicView *selectedTopicView;
-
 @property (nonatomic, strong) UIImageView *arrowImageView;
+
+@property (nonatomic, unsafe_unretained) BOOL wasExpanded;
+@property (nonatomic, unsafe_unretained) BOOL shouldContractOnTouchesEnded;
 
 @end
 
@@ -42,14 +44,14 @@
     return self;
 }
 
-- (id)initWithTopicsArray:(NSArray *)topics inNavigationBar:(UINavigationBar *)navigationBar{
+- (id)initWithTopicsArray:(NSArray *)topics{
     
-    if(self = [super initWithFrame: navigationBar.bounds]){
+    if(self = [super initWithFrame: [LAMSelectTopicView contractedRect]]){
         
         self.topics = [topics mutableCopy];
         self.topicsViewArray = [NSMutableArray array];
-        self.topicViewSize  = navigationBar.bounds.size;
         self.selectedTopic = ([topics count] > 0) ? topics[0] : nil;
+        self.shouldContractOnTouchesEnded = NO;
         
         [self.topics enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
            
@@ -60,17 +62,30 @@
             
             [self addSeparatorViewAtIndex: i];
         }
-        
-        [navigationBar addSubview: self];
+
         self.clipsToBounds = YES;
         
         self.selectedTopicView = ([self.topicsViewArray count] > 0) ? self.topicsViewArray[0] : nil;
         [self updateTopicViewsTitleAccordingSelectedTopicView];
-        
         [self addArrowImageView];
     }
     
     return self;
+}
+
+#pragma mark Frames
+
++ (CGRect)contractedRect{
+    
+    return CGRectMake(0, 0, TOPIC_VIEW_SIZE.width, TOPIC_VIEW_SIZE.height);
+}
+
++ (CGRect)expandedRectForLAMSelectTopicViewWithTopics:(NSArray *)topics{
+    
+    CGRect expandRect = [LAMSelectTopicView contractedRect];
+    expandRect.size.height = [topics count] * TOPIC_VIEW_SIZE.height;
+    
+    return expandRect;
 }
 
 #pragma mark Arrow
@@ -104,28 +119,41 @@
 
 - (void)expand{
     
-    CGRect expandRect = self.frame;
-    expandRect.size.height = [self.topics count] * self.topicViewSize.height;
+    if(!self.wasExpanded &&
+       self.delegate &&
+       [self.delegate respondsToSelector:@selector(LAMSelectTopicViewWillExpand:)]){
+        
+        [self.delegate LAMSelectTopicViewWillExpand: self];
+    }
     
-    [self animateToNewRect: expandRect];
+    [self animateToNewRect: [LAMSelectTopicView expandedRectForLAMSelectTopicViewWithTopics: self.topics]];
     self.layer.cornerRadius = 2.f;
     
     [self rotateArrowFor: 180.];
+    
+    self.wasExpanded = YES;
 }
 
 #pragma mark Contract
 
 - (void)contract{
     
-    CGRect contractRect = self.frame;
-    contractRect.size.height = self.topicViewSize.height;
+    if(self.wasExpanded && 
+       self.delegate &&
+       [self.delegate respondsToSelector:@selector(LAMSelectTopicViewWillContract:)]){
+        
+        [self.delegate LAMSelectTopicViewWillContract: self];
+    }
     
-    [self animateToNewRect: contractRect];
+    [self animateToNewRect: [LAMSelectTopicView contractedRect]];
     self.layer.cornerRadius = 0.f;
     
     [self rotateArrowFor: 0.];
     
     [self deselectSelectedTopicView];
+    
+    self.wasExpanded = NO;
+    self.shouldContractOnTouchesEnded = NO;
 }
 
 #pragma mark Touches
@@ -154,6 +182,7 @@
         [self.selectedTopicView setSelected: YES];
     }
     
+    self.shouldContractOnTouchesEnded = YES;
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -168,24 +197,31 @@
 
 - (void)userDidEndTouches:(NSSet *)touches withEvent:(UIEvent *)event{
     
-    CGPoint locationPoint = [[touches anyObject] locationInView:self];
-    UIView* topicView = [self hitTest:locationPoint withEvent:event];
-    if([topicView isKindOfClass: [LAMTopicView class]]){
+    if(self.shouldContractOnTouchesEnded){
         
-        if(self.delegate &&
-           [self.delegate respondsToSelector:@selector(LAMSelectTopicView:didSelectTopic:)]){
+        CGPoint locationPoint = [[touches anyObject] locationInView:self];
+        UIView* topicView = [self hitTest:locationPoint withEvent:event];
+        if([topicView isKindOfClass: [LAMTopicView class]]){
             
-            self.selectedTopic = self.selectedTopicView.title;
-            [self.delegate LAMSelectTopicView:self didSelectTopic: self.selectedTopic];
+            if(self.delegate &&
+               [self.delegate respondsToSelector:@selector(LAMSelectTopicView:didSelectTopic:)]){
+                
+                self.selectedTopic = self.selectedTopicView.title;
+                [self.delegate LAMSelectTopicView:self didSelectTopic: self.selectedTopic];
+            }
+            
+            [self updateTopicViewsTitleAccordingSelectedTopicView];
+            [self deselectSelectedTopicView];
+            [self contract];
         }
-        
-        [self updateTopicViewsTitleAccordingSelectedTopicView];
-        [self deselectSelectedTopicView];
-        [self contract];
+        else{
+            
+            [self contract];
+        }
     }
     else{
         
-        [self contract];
+        self.shouldContractOnTouchesEnded = YES;
     }
 }
 
@@ -213,15 +249,15 @@
 
 - (void)addSeparatorViewAtIndex:(NSUInteger)index{
     
-    UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(0, (index + 1) * (self.topicViewSize.height) - SEPARATOR_VIEW_HEIGHT, self.topicViewSize.width, SEPARATOR_VIEW_HEIGHT)];
+    UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(0, (index + 1) * (TOPIC_VIEW_SIZE.height) - SEPARATOR_VIEW_HEIGHT, TOPIC_VIEW_SIZE.width, SEPARATOR_VIEW_HEIGHT)];
     [separatorView setBackgroundColor: [UIColor LAMSelectTopicViewSeparatorColor]];
     [self addSubview: separatorView];
 }
 
 - (LAMTopicView *)addTopicViewWithTitle:(NSString *)topic atIndex:(NSUInteger)viewIndex{
     
-    CGFloat originY = (self.topicViewSize.height) * viewIndex;
-    LAMTopicView *view = [[LAMTopicView alloc] initWithFrame:CGRectMake(0, originY, self.topicViewSize.width, self.topicViewSize.height)
+    CGFloat originY = (TOPIC_VIEW_SIZE.height) * viewIndex;
+    LAMTopicView *view = [[LAMTopicView alloc] initWithFrame:CGRectMake(0, originY, TOPIC_VIEW_SIZE.width, TOPIC_VIEW_SIZE.height)
                                                     andTitle:topic];
     
     [self addSubview: view];

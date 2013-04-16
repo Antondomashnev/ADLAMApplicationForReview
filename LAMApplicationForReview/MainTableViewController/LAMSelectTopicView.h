@@ -13,6 +13,8 @@
 @protocol LAMSelectTopicViewDelegate <NSObject>
 
 - (void)LAMSelectTopicView:(LAMSelectTopicView *)view didSelectTopic:(NSString *)topic;
+- (void)LAMSelectTopicViewWillExpand:(LAMSelectTopicView *)view;
+- (void)LAMSelectTopicViewWillContract:(LAMSelectTopicView *)view;
 
 @end
 
@@ -21,7 +23,7 @@
 @property (nonatomic, weak) id<LAMSelectTopicViewDelegate> delegate;
 @property (nonatomic, strong) NSString *selectedTopic;
 
-- (id)initWithTopicsArray:(NSArray *)topics inNavigationBar:(UINavigationBar *)navigationBar;
+- (id)initWithTopicsArray:(NSArray *)topics;
 
 - (void)contract;
 

@@ -20,6 +20,6 @@ extern NSString* const LAMServerErrorDomain;
 typedef void (^LAMArrayResultBlock)(NSArray *objects, NSError *error);
 
 //LAMPostCellAlphaFormulaConstants
-#define LAM_POST_CELL_ZERO_ALPHA_CENTER_OFFSET_Y 400
+#define LAM_POST_CELL_ZERO_ALPHA_CENTER_OFFSET_Y -400
 
 

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D47CB69171DC4C1000AFCAA /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D47CB67171DC4C1000AFCAA /* MainViewController.m */; };
+		6D47CB6A171DC4C1000AFCAA /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D47CB68171DC4C1000AFCAA /* MainViewController.xib */; };
+		6D47CB6C171DD4B5000AFCAA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D47CB6B171DD4B4000AFCAA /* SystemConfiguration.framework */; };
+		6D47CB6E171DD4BB000AFCAA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D47CB6D171DD4BB000AFCAA /* MobileCoreServices.framework */; };
+		6D47CB71171DEEE3000AFCAA /* LAMDimView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D47CB70171DEEE3000AFCAA /* LAMDimView.m */; };
 		6DAACF8417184BBF0073319C /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAACF7117184BBF0073319C /* SDImageCache.m */; };
 		6DAACF8517184BBF0073319C /* SDWebImageCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAACF7317184BBF0073319C /* SDWebImageCompat.m */; };
 		6DAACF8617184BBF0073319C /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAACF7517184BBF0073319C /* SDWebImageDecoder.m */; };
@@ -44,8 +49,6 @@
 		6DB1E2FC1718051800CEEB81 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB1E2F11718051800CEEB81 /* AFURLConnectionOperation.m */; };
 		6DB1E2FD1718051800CEEB81 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB1E2F31718051800CEEB81 /* AFXMLRequestOperation.m */; };
 		6DB1E2FE1718051800CEEB81 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB1E2F51718051800CEEB81 /* UIImageView+AFNetworking.m */; };
-		6DB1E3031718055000CEEB81 /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB1E3011718055000CEEB81 /* MainTableViewController.m */; };
-		6DB1E3041718055000CEEB81 /* MainTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DB1E3021718055000CEEB81 /* MainTableViewController.xib */; };
 		6DB1E309171805A700CEEB81 /* LAMPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB1E308171805A700CEEB81 /* LAMPostCell.m */; };
 		6DB1E3141718084400CEEB81 /* LAMPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB1E3131718084400CEEB81 /* LAMPost.m */; };
 		6DB1E31717180BE200CEEB81 /* LAMPost+Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB1E31617180BE200CEEB81 /* LAMPost+Network.m */; };
@@ -55,6 +58,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6D47CB66171DC4C0000AFCAA /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		6D47CB67171DC4C1000AFCAA /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		6D47CB68171DC4C1000AFCAA /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		6D47CB6B171DD4B4000AFCAA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		6D47CB6D171DD4BB000AFCAA /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		6D47CB6F171DEEE3000AFCAA /* LAMDimView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LAMDimView.h; sourceTree = "<group>"; };
+		6D47CB70171DEEE3000AFCAA /* LAMDimView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LAMDimView.m; sourceTree = "<group>"; };
 		6DAACF7017184BBF0073319C /* SDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCache.h; sourceTree = "<group>"; };
 		6DAACF7117184BBF0073319C /* SDImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDImageCache.m; sourceTree = "<group>"; };
 		6DAACF7217184BBF0073319C /* SDWebImageCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageCompat.h; sourceTree = "<group>"; };
@@ -121,9 +131,6 @@
 		6DB1E2F31718051800CEEB81 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		6DB1E2F41718051800CEEB81 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		6DB1E2F51718051800CEEB81 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		6DB1E3001718055000CEEB81 /* MainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableViewController.h; sourceTree = "<group>"; };
-		6DB1E3011718055000CEEB81 /* MainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewController.m; sourceTree = "<group>"; };
-		6DB1E3021718055000CEEB81 /* MainTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTableViewController.xib; sourceTree = "<group>"; };
 		6DB1E307171805A700CEEB81 /* LAMPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LAMPostCell.h; sourceTree = "<group>"; };
 		6DB1E308171805A700CEEB81 /* LAMPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LAMPostCell.m; sourceTree = "<group>"; };
 		6DB1E3121718084400CEEB81 /* LAMPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LAMPost.h; sourceTree = "<group>"; };
@@ -143,6 +150,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D47CB6E171DD4BB000AFCAA /* MobileCoreServices.framework in Frameworks */,
+				6D47CB6C171DD4B5000AFCAA /* SystemConfiguration.framework in Frameworks */,
 				6DAACFE0171B2FD50073319C /* QuartzCore.framework in Frameworks */,
 				6DAACF9817184DBE0073319C /* CoreGraphics.framework in Frameworks */,
 				6DAACF9717184DA20073319C /* ImageIO.framework in Frameworks */,
@@ -205,6 +214,8 @@
 		6DB1E2AA171803E500CEEB81 = {
 			isa = PBXGroup;
 			children = (
+				6D47CB6D171DD4BB000AFCAA /* MobileCoreServices.framework */,
+				6D47CB6B171DD4B4000AFCAA /* SystemConfiguration.framework */,
 				6DAACFDF171B2FD50073319C /* QuartzCore.framework */,
 				6DAACF9617184DA20073319C /* ImageIO.framework */,
 				6DAACF9417184D470073319C /* CoreImage.framework */,
@@ -302,15 +313,17 @@
 		6DB1E2FF1718053900CEEB81 /* MainTableViewController */ = {
 			isa = PBXGroup;
 			children = (
-				6DB1E3001718055000CEEB81 /* MainTableViewController.h */,
-				6DB1E3011718055000CEEB81 /* MainTableViewController.m */,
-				6DB1E3021718055000CEEB81 /* MainTableViewController.xib */,
 				6DB1E307171805A700CEEB81 /* LAMPostCell.h */,
 				6DB1E308171805A700CEEB81 /* LAMPostCell.m */,
 				6DAACFD9171B12EF0073319C /* LAMSelectTopicView.h */,
 				6DAACFDA171B12EF0073319C /* LAMSelectTopicView.m */,
 				6DAACFDC171B16E50073319C /* LAMTopicView.h */,
 				6DAACFDD171B16E60073319C /* LAMTopicView.m */,
+				6D47CB66171DC4C0000AFCAA /* MainViewController.h */,
+				6D47CB67171DC4C1000AFCAA /* MainViewController.m */,
+				6D47CB68171DC4C1000AFCAA /* MainViewController.xib */,
+				6D47CB6F171DEEE3000AFCAA /* LAMDimView.h */,
+				6D47CB70171DEEE3000AFCAA /* LAMDimView.m */,
 			);
 			path = MainTableViewController;
 			sourceTree = "<group>";
@@ -392,11 +405,11 @@
 				6DB1E2C9171803E700CEEB81 /* Default.png in Resources */,
 				6DB1E2CB171803E700CEEB81 /* Default@2x.png in Resources */,
 				6DB1E2CD171803E700CEEB81 /* Default-568h@2x.png in Resources */,
-				6DB1E3041718055000CEEB81 /* MainTableViewController.xib in Resources */,
 				6DAACFE6171B334B0073319C /* arrow_down.png in Resources */,
 				6DAACFE7171B334B0073319C /* arrow_down@2x.png in Resources */,
 				6DAACFE8171B334B0073319C /* arrow_up.png in Resources */,
 				6DAACFE9171B334B0073319C /* arrow_up@2x.png in Resources */,
+				6D47CB6A171DC4C1000AFCAA /* MainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,7 +431,6 @@
 				6DB1E2FC1718051800CEEB81 /* AFURLConnectionOperation.m in Sources */,
 				6DB1E2FD1718051800CEEB81 /* AFXMLRequestOperation.m in Sources */,
 				6DB1E2FE1718051800CEEB81 /* UIImageView+AFNetworking.m in Sources */,
-				6DB1E3031718055000CEEB81 /* MainTableViewController.m in Sources */,
 				6DB1E309171805A700CEEB81 /* LAMPostCell.m in Sources */,
 				6DB1E3141718084400CEEB81 /* LAMPost.m in Sources */,
 				6DB1E31717180BE200CEEB81 /* LAMPost+Network.m in Sources */,
@@ -438,6 +450,8 @@
 				6DAACF9317184CC40073319C /* MBProgressHUD+LAMStyle.m in Sources */,
 				6DAACFDB171B12EF0073319C /* LAMSelectTopicView.m in Sources */,
 				6DAACFDE171B16E70073319C /* LAMTopicView.m in Sources */,
+				6D47CB69171DC4C1000AFCAA /* MainViewController.m in Sources */,
+				6D47CB71171DEEE3000AFCAA /* LAMDimView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

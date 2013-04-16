@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class MainTableViewController;
+@class MainViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) MainTableViewController *viewController;
+@property (strong, nonatomic) MainViewController *viewController;
 
 @end

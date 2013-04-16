@@ -37,9 +37,10 @@
 
 - (void)updateAlphaForOffsetYFromScreenCenter:(CGFloat)offsetY{
  
-    //NSLog(@"OFFSET %f", offsetY);
-    
-    if(offsetY > LAM_POST_CELL_ZERO_ALPHA_CENTER_OFFSET_Y){
+    if(offsetY > 0){
+        self.alpha = 1.f;
+    }
+    else if(offsetY < LAM_POST_CELL_ZERO_ALPHA_CENTER_OFFSET_Y){
         self.alpha = 0.f;
     }
     else{

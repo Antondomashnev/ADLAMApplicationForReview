@@ -38,4 +38,12 @@
     return [UIColor blackColor];
 }
 
++ (UIColor *)LAMDimViewTopGradientColor{
+    return [UIColor colorWithRed:0. green:0. blue:0. alpha:.8];
+}
+
++ (UIColor *)LAMDimViewBottomGradientColor{
+    return [UIColor colorWithRed:200./255. green:200./255. blue:200./255. alpha:.4];
+}
+
 @end

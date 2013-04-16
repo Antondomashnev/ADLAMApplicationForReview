@@ -20,4 +20,7 @@
 
 + (UIColor *)LAMSelectTopicViewSeparatorColor;
 
++ (UIColor *)LAMDimViewTopGradientColor;
++ (UIColor *)LAMDimViewBottomGradientColor;
+
 @end
